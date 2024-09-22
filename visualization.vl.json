@@ -1,0 +1,64 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 450,
+  "title": "Average Price of a Taxi Fare in Major Australian Cities",
+  "projection": {
+    "type": "mercator",
+    "center": [133.7751, -25.2744],
+    "scale": 550 
+  },
+  "layer": [
+    
+     {
+      
+      "data": {"sphere": true},
+      "mark": {"type": "geoshape", "fill": "#c7e7f7"}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/tmar0048/3179A2/main/AustraliaClipped.topojson",
+        "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
+      },
+      "mark": {"type": "geoshape", "fill": "tan", "stroke": "white"}
+    },
+    {
+      "data": {"graticule": true},
+      "mark": {"type": "geoshape", "stroke": "gray", "strokeWidth": 0.5}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/tmar0048/3179A2/main/taxifare.csv"
+      },
+      "mark": {"type": "circle", "tooltip": {"content": "data"}},
+      "encoding": {
+        "longitude": {"field": "Longitude", "type": "quantitative"},
+        "latitude": {"field": "Latitude", "type": "quantitative"},
+        "size": {
+          "field": "8km trip",
+          "type": "quantitative",
+          "title": "Price for 8km Trip",
+          "scale": {"domain": [0, 50], "range": [-1000, 3000]}
+        },
+        "color": {
+          "field": "8km trip",
+          "type": "quantitative",
+          "title": "Price for 8km Trip",
+          "scale":{
+           "domain": [20, 50],
+            "range": [ "#ffcccc" , "#ff6666", "#ff0000", "#990000", "#4a0000"]
+        }
+        },
+        "tooltip": [
+          {"field": "City", "type": "nominal", "title": "City"},
+          {"field": "Taxi Start", "type": "quantitative", "title": "Base Price"},
+          {"field": "1km", "type": "quantitative", "title": "Price per KM"},
+          {"field": "1h waiting", "type": "quantitative", "title": "Price per hour waiting"},
+          {"field": "8km trip", "type": "quantitative", "title": "Average Fare for an 8km trip"},
+          {"field": "Longitude", "type": "quantitative", "title": "Longitude"},
+          {"field": "Latitude", "type": "quantitative", "title": "Latitude"}
+        ]
+      }
+    }
+  ]
+}
