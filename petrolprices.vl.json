@@ -120,5 +120,12 @@
                 }
             }
         }
-    ]
+    ],
+    "title": {
+        "text": "Yearly Average Petrol Prices 2002 - 2022 (cents per litre)",
+        "fontSize": 16,
+        "fontWeight": "bold",
+        "anchor": "middle", // Center title horizontally
+        "dy": -10 // Optional: Vertical offset to position the title
+    }
 }
