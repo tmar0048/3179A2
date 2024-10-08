@@ -2,16 +2,16 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 800,
   "height": 450,
-  "title": "Average Price of a Taxi Fare in Major Australian Cities",
+  "title": {"text": "Average Price of a Taxi Fare in Major Australian Cities",
+            "fontSize": 19
+            },
   "projection": {
     "type": "mercator",
     "center": [133.7751, -25.2744],
-    "scale": 550 
+    "scale": 550
   },
   "layer": [
-    
-     {
-      
+    {
       "data": {"sphere": true},
       "mark": {"type": "geoshape", "fill": "#c7e7f7"}
     },
@@ -30,6 +30,11 @@
       "data": {
         "url": "https://raw.githubusercontent.com/tmar0048/3179A2/main/taxifare.csv"
       },
+      "transform": [
+        {
+          "filter": "citySelection == 'Show All' || datum.City == citySelection"
+        }  
+      ],
       "mark": {"type": "circle", "tooltip": {"content": "data"}},
       "encoding": {
         "longitude": {"field": "Longitude", "type": "quantitative"},
@@ -44,10 +49,10 @@
           "field": "8km trip",
           "type": "quantitative",
           "title": "Price for 8km Trip",
-          "scale":{
-           "domain": [20, 50],
-            "range": [ "#ffcccc" , "#ff6666", "#ff0000", "#990000", "#4a0000"]
-        }
+          "scale": {
+            "domain": [20, 50],
+            "range": ["#ffcccc", "#ff6666", "#ff0000", "#990000", "#4a0000"]
+          }
         },
         "tooltip": [
           {"field": "City", "type": "nominal", "title": "City"},
@@ -58,6 +63,22 @@
           {"field": "Longitude", "type": "quantitative", "title": "Longitude"},
           {"field": "Latitude", "type": "quantitative", "title": "Latitude"}
         ]
+      }
+    }
+  ],
+  "params": [
+    {
+      "name": "citySelection",
+      "value": "Show All",  
+      "bind": {
+        "input": "select",
+        "options": [
+          "Show All", "Adelaide", "Brisbane", "Canberra", "Darwin", "Gold Coast", "Hobart", "Melbourne", "Newcastle", "Perth", "Sydney"
+        ],
+        "labels": [
+          "Show All", "Adelaide", "Brisbane", "Canberra", "Darwin", "Gold Coast", "Hobart", "Melbourne", "Newcastle", "Perth", "Sydney"
+        ],
+        "name": "Select City: "
       }
     }
   ]

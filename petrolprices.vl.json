@@ -24,13 +24,14 @@
                     "bind": {
                         "input": "select",
                         "options": [
-                            "NSW", "VIC", "QLD", "SA", "WA", "NT", "TAS", "National"
+                            "Show All", "NSW", "VIC", "QLD", "SA", "WA", "NT", "TAS", "National"
                         ],
                         "name": "Select State(s): ",
                         "multiple": true
                     }
                 }
             },
+            
             "mark": {
                 "type": "line",
                 "strokeWidth": 2
@@ -123,9 +124,9 @@
     ],
     "title": {
         "text": "Yearly Average Petrol Prices 2002 - 2022 (cents per litre)",
-        "fontSize": 16,
+        "fontSize": 19,
         "fontWeight": "bold",
-        "anchor": "middle",
-        "dy": -10
+        "anchor": "middle", 
+        "dy": -10 
     }
 }

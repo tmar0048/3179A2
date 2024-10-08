@@ -11,49 +11,138 @@
     <title>Visualisation 2</title>
     <style>
         body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start; /* Aligns at the top */
-        height: 100vh; 
-        margin: 0; 
-        overflow: auto; /* Allows scrolling if content overflows */
-    }
+            margin: 0;
+            overflow: auto;
+        }
 
-    .page {
-        text-align: center;
-        max-width: 1000px; /* Sets a maximum width for the content */
-        width: 100%; /* Makes the width responsive */
-        padding: 20px; /* Adds some padding for better spacing */
-    }
+        .section {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 50px 20px;
+            min-height: 100vh;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
 
-    #AusMap, #PetrolLine, #TrainMap {
-        margin: 20px 0; 
-        border: 1px solid #ccc; 
-        padding: 10px; 
-        width: 100%; /* Full width of the parent container */
-        max-width: 800px; /* Set a max width for each chart */
-    }
+        /* First section with the first image, blur and darkening applied */
+        #section1 {
+            background-image: url('https://as2.ftcdn.net/v2/jpg/03/15/20/69/1000_F_315206985_CtwBPwb3D9s0SpnF6E4KanPWgJvwJ2zM.jpg');
+        }
 
+        /* Second section with the second image, blur and darkening applied */
+        #section2 {
+            background-image: url('https://as1.ftcdn.net/v2/jpg/07/88/86/14/1000_F_788861450_FdXiqF1acnJzTT6UgeyGrw596i9BRwIK.jpg');
+        }
+
+        /* Apply slight blur and darken the background images */
+        #section1::before, #section2::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 1); /* Slight dark overlay */
+            filter: blur(50px); /* Slight blur effect */
+            z-index: -1; /* Keep it behind the content */
+        }
+
+        .page-content {
+            text-align: center;
+            max-width: 1200px; /* Widen the content */
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 0 20px 20px; /* Remove padding from the top */
+            border-radius: 10px;
+            position: relative; /* Ensure content stays on top */
+            z-index: 1; /* Keeps content above the overlay */
+        }
+
+        #AusMap, #PetrolLine, #TrainMap {
+            margin: 20px 0;
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 100%;
+            max-width: 1000px; /* Widen the charts */
+        }
+
+        /* White box styling for the first heading */
+        .white-box-heading {
+            background-color: white;
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds shadow effect */
+            margin-bottom: 20px;
+            font-size: 2rem;
+            max-width: 900px;
+        }
     </style>
 </head>
 
 <body>
-    <div class="page">
-        <h1>Taxi Fares</h1>
-        <div id="AusMap">
-            <!-- Map content goes here -->
-        </div>
 
-        <h1>Petrol Prices</h1>
-        <div id="PetrolLine">
-            <!-- The Vega-Lite Petrol line chart will be embedded here -->
-        </div>
+    <!-- First Section -->
+    <div id="section1" class="section">
+        <h1 class="white-box-heading">Comparison of Australian Transport Options</h1>
+        <div class="page-content">
 
-        <h1>Public Transport</h1>
-        <div id="TrainMap">
-            <!-- The Vega-Lite Petrol line chart will be embedded here -->
+            <div style="max-width: 600px; margin: auto;">
+                <br>
+                <h2>What are the costs of driving?</h2>
+                From 2002 to 2022, petrol prices in Australia rose steadily due to global
+                 and domestic factors. Initially low, prices increased as global demand for
+                  oil grew and supply tightened. Although the 2008 global financial crisis
+                   caused temporary dips, prices rebounded as economies recovered. 
+                   By the 2010s, geopolitical tensions and currency fluctuations further
+                    drove prices up. While the COVID-19 pandemic briefly decreased demand,
+                     supply chain disruptions and inflation in 2022 led to a sharp surge in
+                      petrol prices, affecting households and industries across the country.
+            </div>
+
+            <div id="PetrolLine">
+                <!-- The Vega-Lite Petrol line chart will be embedded here -->
+            </div>
+            
         </div>
     </div>
+
+    <!-- Second Section -->
+    <div id="section2" class="section">
+        <div class="page-content">
+            <br>
+            <h2>What's the next option?</h2>
+            <div style="max-width: 600px; margin: auto;">
+            With the rising petrol costs, the next obvious choice for commuters is to go to public transport,
+             let's look at the costs of taking public transport, we'll look at the maximum daily cap for transport cards in
+             states around Australia.
+            </div>
+            <div id="TrainMap">
+                <!-- The Vega-Lite Public Transport map will be embedded here -->
+            </div>
+
+            <h2>Something else</h2>
+            <div style="max-width: 600px; margin: auto;">
+                For some, public transport may not be a viable option, with wait times, delays and potential closures it's not always
+                possible to use public transport, lets look at the costs of taking a taxi in major Australian cities.
+
+            </div>
+            <div id="AusMap">
+                <!-- Map content goes here -->
+            </div>
+
+            <div id="Ebike"></div>
+                <!-- Map content goes here -->
+            </div>
+
+
+        </div>
+    </div>
+
 </body>
 </html>
