@@ -8,69 +8,50 @@
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
     <script src="vega_lite_vis.js"></script>
 
-    <title>Week 9 homework</title>
+    <title>Visualisation 2</title>
     <style>
-        /* Add CSS to center the content */
         body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;  /* Centers horizontally */
-            justify-content: center; /* Centers vertically */
-            height: 100vh; /* Full height */
-            margin: 0; /* Remove default margin */
-        }
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start; /* Aligns at the top */
+        height: 100vh; 
+        margin: 0; 
+        overflow: auto; /* Allows scrolling if content overflows */
+    }
 
-        .page {
-            text-align: center; /* Center text */
-        }
+    .page {
+        text-align: center;
+        max-width: 1000px; /* Sets a maximum width for the content */
+        width: 100%; /* Makes the width responsive */
+        padding: 20px; /* Adds some padding for better spacing */
+    }
 
-        /* Optional: Style for divs */
-        #AusMap, #PetrolLine {
-            margin: 20px 0; /* Spacing between elements */
-            border: 1px solid #ccc; /* Optional border for visibility */
-            padding: 10px; /* Optional padding */
-            width: 80%; /* Optional width */
-        }
+    #AusMap, #PetrolLine, #TrainMap {
+        margin: 20px 0; 
+        border: 1px solid #ccc; 
+        padding: 10px; 
+        width: 100%; /* Full width of the parent container */
+        max-width: 800px; /* Set a max width for each chart */
+    }
+
     </style>
 </head>
-    
+
 <body>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    
-    
     <div class="page">
-        <h1>Week 9 homework map idiom</h1>
+        <h1>Taxi Fares</h1>
         <div id="AusMap">
             <!-- Map content goes here -->
         </div>
 
-        <h1>Week 10 homework line chart idiom</h1>
+        <h1>Petrol Prices</h1>
         <div id="PetrolLine">
+            <!-- The Vega-Lite Petrol line chart will be embedded here -->
+        </div>
+
+        <h1>Public Transport</h1>
+        <div id="TrainMap">
             <!-- The Vega-Lite Petrol line chart will be embedded here -->
         </div>
     </div>
