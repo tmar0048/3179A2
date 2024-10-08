@@ -30,7 +30,7 @@
       },
       "tooltip": [
         {"field": "properties.name", "type": "nominal", "title": "State"},
-        {"field": "Price", "type": "quantitative", "title": "Faily Maximum Fare"}
+        {"field": "Price", "type": "quantitative", "title": "Daily Maximum Fare"}
       ]
     }
   }
