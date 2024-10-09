@@ -13,134 +13,125 @@
         body {
             margin: 0;
             overflow: auto;
+            font-family: sans-serif;
         }
 
-        .section {
-            position: relative;
+        .container {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
             padding: 50px 20px;
-            min-height: 100vh;
             width: 100%;
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-
-        /* First section with the first image, blur and darkening applied */
-        #section1 {
-            background-image: url('https://as2.ftcdn.net/v2/jpg/03/15/20/69/1000_F_315206985_CtwBPwb3D9s0SpnF6E4KanPWgJvwJ2zM.jpg');
-        }
-
-        /* Second section with the second image, blur and darkening applied */
-        #section2 {
-            background-image: url('https://as1.ftcdn.net/v2/jpg/07/88/86/14/1000_F_788861450_FdXiqF1acnJzTT6UgeyGrw596i9BRwIK.jpg');
-        }
-
-        /* Apply slight blur and darken the background images */
-        #section1::before, #section2::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 1); /* Slight dark overlay */
-            filter: blur(50px); /* Slight blur effect */
-            z-index: -1; /* Keep it behind the content */
+            background-color: #f5f5f5;
         }
 
         .page-content {
             text-align: center;
-            max-width: 1200px; /* Widen the content */
+            max-width: 1200px;
             width: 100%;
             background-color: rgba(255, 255, 255, 0.8);
-            padding: 0 20px 20px; /* Remove padding from the top */
+            padding: 20px;
             border-radius: 10px;
-            position: relative; /* Ensure content stays on top */
-            z-index: 1; /* Keeps content above the overlay */
+            margin-bottom: 30px;
         }
 
-        #AusMap, #PetrolLine, #TrainMap {
+        #AusMap, #PetrolLine, #TrainMap, #Ebike {
             margin: 20px 0;
             border: 1px solid #ccc;
             padding: 10px;
             width: 100%;
-            max-width: 1000px; /* Widen the charts */
+            max-width: 1000px;
         }
 
-        /* White box styling for the first heading */
         .white-box-heading {
             background-color: white;
             padding: 20px;
             border: 2px solid #ccc;
             border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds shadow effect */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
             font-size: 2rem;
-            max-width: 900px;
+            max-width: 1100px;
         }
+
+        .subheading {
+            font-size: 2rem;
+        }
+
+        .textbox {
+            font-family: sans-serif;
+        }
+
     </style>
 </head>
 
 <body>
 
-    <!-- First Section -->
-    <div id="section1" class="section">
-        <h1 class="white-box-heading">Comparison of Australian Transport Options</h1>
+    <!-- Main Continuous Section -->
+    <div class="container">
+        <div class="white-box-heading">
+            <h1 style="font-size: 3rem;">Comparison of Australian Transport Options</h1>
+            <h2 style="font-size: 1rem;">Authored by Toby Marsden 15/10/2024</h2>
+        </div>
+        
         <div class="page-content">
-
-            <div style="max-width: 600px; margin: auto;">
-                <br>
-                <h2>What are the costs of driving?</h2>
-                From 2002 to 2022, petrol prices in Australia rose steadily due to global
-                 and domestic factors. Initially low, prices increased as global demand for
-                  oil grew and supply tightened. Although the 2008 global financial crisis
-                   caused temporary dips, prices rebounded as economies recovered. 
-                   By the 2010s, geopolitical tensions and currency fluctuations further
-                    drove prices up. While the COVID-19 pandemic briefly decreased demand,
-                     supply chain disruptions and inflation in 2022 led to a sharp surge in
-                      petrol prices, affecting households and industries across the country.
+            <div style="max-width: 600px; margin: auto;" class="textbox">
+                <h2 class="subheading">What are the costs of driving?</h2>
+                <p>From 2002 to 2022, petrol prices in Australia rose steadily due to global
+                    and domestic factors. Initially low, prices increased as global demand for
+                     oil grew and supply tightened. Although the 2008 global financial crisis
+                      caused temporary dips, prices rebounded as economies recovered. 
+                      By the 2010s, geopolitical tensions and currency fluctuations further
+                       drove prices up. While the COVID-19 pandemic briefly decreased demand,
+                        supply chain disruptions and inflation in 2022 led to a sharp surge in
+                         petrol prices, affecting households and industries across the country.</p>
             </div>
 
             <div id="PetrolLine">
                 <!-- The Vega-Lite Petrol line chart will be embedded here -->
             </div>
-            
         </div>
-    </div>
 
-    <!-- Second Section -->
-    <div id="section2" class="section">
         <div class="page-content">
-            <br>
-            <h2>What's the next option?</h2>
+            <h2 class="subheading">What's the next option?</h2>
             <div style="max-width: 600px; margin: auto;">
-            With the rising petrol costs, the next obvious choice for commuters is to go to public transport,
-             let's look at the costs of taking public transport, we'll look at the maximum daily cap for transport cards in
-             states around Australia.
+                <p>With the rising petrol costs, the next obvious choice for commuters is to go to public transport,
+                    let's look at the costs of taking public transport, we'll look at the maximum daily cap for transport cards in
+                    states around Australia.</p>
             </div>
+
             <div id="TrainMap">
                 <!-- The Vega-Lite Public Transport map will be embedded here -->
             </div>
+        </div>
 
-            <h2>Something else</h2>
+        <div class="page-content">
+            <h2 class="subheading">An Alternative Method</h2>
             <div style="max-width: 600px; margin: auto;">
-                For some, public transport may not be a viable option, with wait times, delays and potential closures it's not always
-                possible to use public transport, lets look at the costs of taking a taxi in major Australian cities.
-
+                <p>For some, public transport may not be a viable option, with wait times, delays and potential closures it's not always
+                    possible to use public transport, lets look at the costs of taking a taxi in major Australian cities.</p>
             </div>
+
             <div id="AusMap">
-                <!-- Map content goes here -->
+                <!-- The Vega-Lite Public Transport map will be embedded here -->
+            </div>
+        </div>
+
+        <div class="page-content">
+            <h2 class="subheading">Not going as far?</h2>
+            <div style="max-width: 600px; margin: auto;">
+                <p>Some major cities have recently introduced trials for the use of ebikes to be hired by commuters,
+                     while these initiatives are a good choice for those travelling short distances or moving around
+                      the city during working hours, this is not an option for the entire country as can be seen with]
+                       this next visualisation.
+
+                </p>
             </div>
 
-            <div id="Ebike"></div>
-                <!-- Map content goes here -->
+            <div id="Ebike">
+                <!-- The Vega-Lite E-bike map will be embedded here -->
             </div>
-
-
         </div>
     </div>
 
