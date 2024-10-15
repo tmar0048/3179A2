@@ -4,129 +4,120 @@
     "width": 600,
     "height": 500,
     "data": {
-        "url": "https://raw.githubusercontent.com/tmar0048/3179A2/refs/heads/main/petrolprice.csv",
-        "format": {"type": "csv"}
+      "url": "https://raw.githubusercontent.com/tmar0048/3179A2/refs/heads/main/petrolprice.csv",
+      "format": {"type": "csv"}
     },
     "layer": [
-        {
-            "transform": [
-                {
-                    "fold": [
-                        "NSW", "VIC", "QLD", "SA", "WA", "NT", "TAS", "National"
-                    ],
-                    "as": ["State", "Price"]
-                }
-            ],
-            "selection": {
-                "StateSelection": {
-                    "type": "multi",
-                    "fields": ["State"],
-                    "bind": {
-                        "input": "select",
-                        "options": [
-                            "Show All", "NSW", "VIC", "QLD", "SA", "WA", "NT", "TAS", "National"
-                        ],
-                        "name": "Select State(s): ",
-                        "multiple": true
-                    }
-                }
-            },
-            
-            "mark": {
-                "type": "line",
-                "strokeWidth": 2
-            },
-            "encoding": {
-                "x": {
-                    "field": "Year",
-                    "type": "ordinal",
-                    "title": "Year"
-                },
-                "y": {
-                    "field": "Price",
-                    "type": "quantitative",
-                    "title": "Petrol Price (cents per litre)",
-                    "scale": {"zero": false, "nice": true}
-                },
-                "color": {
-                    "field": "State",
-                    "type": "nominal",
-                    "title": "State/National Average"
-                },
-                "opacity": {
-                    "condition": {"selection": "StateSelection", "value": 1},
-                    "value": 0.2
-                },
-                "tooltip": [
-                    {"field": "State", "type": "nominal", "title": "State"},
-                    {"field": "Year", "type": "ordinal", "title": "Year"},
-                    {"field": "Price", "type": "quantitative", "title": "Petrol Price (cents)"}
-                ]
-            },
-            "config": {
-                "mark": {
-                    "tooltip": true,
-                    "opacity": 0.6,
-                    "cursor": "pointer"
-                }
+      {
+        "transform": [
+          {
+            "fold": ["NSW", "VIC", "QLD", "SA", "WA", "NT", "TAS", "National"],
+            "as": ["State", "Price"]
+          }
+        ],
+        "selection": {
+          "StateSelection": {
+            "type": "multi",
+            "fields": ["State"],
+            "bind": {
+              "input": "select",
+              "options": [
+                "Show All", "NSW", "VIC", "QLD", "SA", "WA", "NT", "TAS", "National"
+              ],
+              "name": "Select State(s): ",
+              "multiple": true
             }
+          }
         },
-        {
-            "mark": {
-                "type": "text",
-                "align": "center",
-                "baseline": "middle",
-                "fontStyle": "italic",
-                "fontSize": 15
-              },
-            "encoding": {
-                "x": {"value": 530}, 
-                "y": {"value": 400},   
-                "text": {"value": "Petrol prices drop in 2020 due to COVID-19 pandemic"},
-                "color": {"value": "black"},
-                "fontSize": {"value": 16},
-                "fontWeight": {"value": "bold"},
-                "align": {"value": "left"},
-                "baseline": {"value": "middle"}
-                
-            },
-            "config": {
-                "mark": {
-                    "tooltip": true
-                }
-            }
+        "mark": {"type": "line", "strokeWidth": 3},
+        "encoding": {
+          "x": {"field": "Year", "type": "ordinal", "title": "Year"},
+          "y": {
+            "field": "Price",
+            "type": "quantitative",
+            "title": "Petrol Price (cents per litre)",
+            "scale": {"zero": false, "nice": true}
+          },
+          "color": {"field": "State", "type": "nominal", "title": "State/National Average",
+          "legend": {
+            "titleFontSize": 14,
+            "labelFontSize": 12
+          }},
+          "opacity": {
+            "condition": {"selection": "StateSelection", "value": 1},
+            "value": 0.1
+          },
+          "tooltip": [
+            {"field": "State", "type": "nominal", "title": "State"},
+            {"field": "Year", "type": "ordinal", "title": "Year"},
+            {"field": "Price", "type": "quantitative", "title": "Petrol Price (cents)"}
+          ]
         },
-        {
-            "mark": {
-                "type": "text",
-                "align": "center",
-                "baseline": "middle",
-                "fontStyle": "italic",
-                "fontSize": 15
-              },
-            "encoding": {
-                "x": {"value": 180}, 
-                "y": {"value": 150},   
-                "text": {"value": "Petrol prices spike during 2008 GFC"},
-                "color": {"value": "black"},
-                "fontSize": {"value": 16},
-                "fontWeight": {"value": "bold"},
-                "align": {"value": "left"},
-                "baseline": {"value": "middle"}
-                
-            },
-            "config": {
-                "mark": {
-                    "tooltip": true
-                }
-            }
+        "config": {"mark": {"tooltip": true, "opacity": 0.6, "cursor": "pointer"}}
+      },
+      {
+        "mark": {
+          "type": "text",
+          "align": "center",
+          "baseline": "middle",
+          "fontStyle": "italic",
+          "fontSize": 15
+        },
+        "encoding": {
+          "x": {"value": 530},
+          "y": {"value": 400},
+          "text": {"value": "Petrol prices drop in 2020 due to COVID-19 pandemic"},
+          "color": {"value": "black"},
+          "fontSize": {"value": 16},
+          "fontWeight": {"value": "bold"},
+          "align": {"value": "left"},
+          "baseline": {"value": "middle"}
         }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "align": "center",
+          "baseline": "middle",
+          "fontStyle": "italic",
+          "fontSize": 15
+        },
+        "encoding": {
+          "x": {"value": 180},
+          "y": {"value": 150},
+          "text": {"value": "Petrol prices spike during 2008 GFC"},
+          "color": {"value": "black"},
+          "fontSize": {"value": 16},
+          "fontWeight": {"value": "bold"},
+          "align": {"value": "left"},
+          "baseline": {"value": "middle"}
+        }
+      },
+      {
+        "mark": {"type": "rule", "stroke": "gray", "strokeWidth": 1, "strokeDash": [5, 5]},
+        "encoding": {
+          "x": {"datum": "2020"},
+          "y": {"value": 400},    
+          "y2": {"value": 340}     
+        }
+      },
+      {
+        "mark": {"type": "rule", "stroke": "gray", "strokeWidth": 1, "strokeDash": [5, 5]},
+        "encoding": {
+          "x": {"datum": "2008"}, 
+          "y": {"value": 150},    
+          "y2": {"value": 200}    
+        }
+      }
     ],
     "title": {
-        "text": "Yearly Average Petrol Prices 2002 - 2022 (cents per litre)",
-        "fontSize": 19,
-        "fontWeight": "bold",
-        "anchor": "middle", 
-        "dy": -10 
+      "text": "Yearly Average Petrol Prices 2002 - 2022 (cents per litre)",
+      "fontSize": 19,
+      "fontWeight": "bold",
+      "anchor": "middle",
+      "frame": "group",
+      "dy": -10,
+      "dx": 100
     }
-}
+  }
+  

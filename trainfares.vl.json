@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {"text": "Transport Fares by State in Australia", "fontSize": 19},
+  "title": {"text": "Transport Fares by State in Australia", "fontSize": 19, "dx": 70},
   "width": 800,
   "height": 600,
   "background": "#c7e7f7", 
@@ -34,7 +34,11 @@
         "color": {
           "field": "PricePerDay",
           "type": "quantitative",
-          "scale": {"type": "linear", "scheme": "reds"}
+          "scale": {"type": "linear", "scheme": "reds"},
+          "legend": {
+            "titleFontSize": 18,
+            "labelFontSize": 15
+          }
         },
         "tooltip": [
           {"field": "properties.name", "type": "nominal", "title": "State"},
